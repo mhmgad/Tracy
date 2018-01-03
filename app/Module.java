@@ -1,3 +1,4 @@
+import client.explain.ExplanationExtractorClient;
 import com.google.inject.AbstractModule;
 
 /**
@@ -14,6 +15,8 @@ public class Module extends AbstractModule {
 
     @Override
     public void configure() {
+
+    bind(ExplanationExtractorClient.class).toInstance(ExplanationExtractorClient.getInstance());
 
     }
 
