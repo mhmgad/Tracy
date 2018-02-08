@@ -90,4 +90,10 @@ body > * {
     pointer-events:none;
     background: linear-gradient(to top, map-get($theme-colors, 'dark') 0%, transparent 100%);
   }
+
+
+  .vertical-divider{
+    clear: both;
+    position: relative;
+  }
 }
