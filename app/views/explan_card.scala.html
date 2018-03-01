@@ -8,16 +8,16 @@
                 <h5>Explanation #@{index + 1}</h5>
             </div>
             <div class="col-md-2">
-                <h6> @("%.3f".format(explan.getQuality())) </h6>
+                <h6> Quality: @("%.3f".format(explan.getQuality())) </h6>
                             </div>
-            <div class="col-md-6">
-                <div class="btn-group btn-group-sm pull-right" role="group" aria-label="feedback">
-                    <button type="button" class="btn btn-success ">Relevant</button>
-                    <button type="button" class="btn btn-warning">Semi-Relevant</button>
-                    <button type="button" class="btn btn-danger">Irrelevant</button>
-                    <button type="button" class="btn btn-secondary">Unknown</button>
-                </div>
-            </div>
+            @*<div class="col-md-6">*@
+                @*<div class="btn-group btn-group-sm justify-content-end" role="group" aria-label="feedback">*@
+                    @*<button type="button" class="btn btn-success ">Relevant</button>*@
+                    @*<button type="button" class="btn btn-warning">Semi-Relevant</button>*@
+                    @*<button type="button" class="btn btn-danger">Irrelevant</button>*@
+                    @*<button type="button" class="btn btn-secondary">Unknown</button>*@
+                @*</div>*@
+            @*</div>*@
         </div>
     </div>
     <div class="card-body ">
@@ -41,7 +41,7 @@
                         @for((node, eviIndex) <- explan.getVerificationEvidences().zipWithIndex) {
                             @if(node.getSourceActionType().toString().startsWith("TEXT")) {
 
-                                <div class="list-group-item"><strong><em>@node.getReadableQuery().toString()</em></strong>
+                                <div class="list-group-item justify-content-between" ><strong><em>@node.getReadableQuery().toString()</em></strong>
                                     <a class="badge badge-pill badge-warning" data-toggle="collapse" href="#textE@{index}-@{eviIndex}">Source:Text </a>
 
                                     <div class="panel-collapse collapse" id="textE@{index}-@{eviIndex}">

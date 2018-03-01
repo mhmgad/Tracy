@@ -25,28 +25,58 @@
 
 
 
-        <link rel="stylesheet" media="screen" style-src="@routes.Assets.versioned("stylesheets/theme.css")" type="text/css">
+        @*<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/theme.css")" >*@
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
 
         <script data-main="@routes.Assets.versioned("lib/jquery/jquery.js")" type="text/javascript" src="@routes.Assets.versioned("lib/jquery/jquery.js")" ></script>
+        <script data-main="@routes.Assets.versioned("lib/popper.js/dist/popper.js")" type="text/javascript" src="@routes.Assets.versioned("lib/popper.js/dist/popper.js")" ></script>
+
         <script data-main="@routes.Assets.versioned("lib/bootstrap/js/bootstrap.js")" type="text/javascript" src="@routes.Assets.versioned("lib/bootstrap/js/bootstrap.js")" ></script>
+        <script data-main="@routes.Assets.versioned("javascripts/checkboxes.js")" type="text/javascript" src="@routes.Assets.versioned("javascripts/checkboxes.js")" ></script>
+
+
+    @*<script>*@
+            @*$(function() {*@
+                @*$("#wiki-quality-range").slider({*@
+
+
+                    @*change: function (event, ui) {*@
+                        @*alert(ui.value);*@
+                        @*$("#wiki-quality-val").text(ui.value);*@
+                    @*}*@
+
+                @*});*@
+                @*// $("#wiki-quality-range").on("slide", function(slideEvt) {*@
+                @*//     $("#wiki-quality-val").text(slideEvt.value);*@
+                @*// });*@
+
+                @*// $("#web-quality-range").slider();*@
+                @*// $("#web-quality-range").on('change', function (slideEvt) {*@
+                @*//     alert(ui.value);*@
+                @*//     $("#web-quality-val").text(slideEvt.value);*@
+                @*// });*@
+            @*});*@
+
+
+@*</script>*@
+
 
     </head>
     <body>
 
         <div class="py-1">
             <div class="container-fluid">
-                <div class="row vertical-divider">
+                <div class="row vdivide">
                     <div class="col-md-3" id="logo_ops_div">
                         <div class="row">
                             <div class="col-md-12">
-                                <h3 class="display-3 text-center">TRuFact!</h3>
+                                <h4 class="display-3 text-center">TRuFact!</h4>
                                 <p  autocomplete="off" style="">
                                     Explaining facts using Text, Rules and Knowledge Graph!</p>
                             </div>
                         </div>
                         <div class="col-md-12">
-                            Options
+                           @options(null)
                         </div>
 
                     </div>
