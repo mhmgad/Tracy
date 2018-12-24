@@ -16,8 +16,8 @@ resolvers += Resolver.url("utils-repo", url("https://raw.github.com/mhmgad/MyUti
 libraryDependencies += guice
 
 libraryDependencies += "factchecking" % "api" % "1.0"
-libraryDependencies += "de.mpii.exfakt" % "utils" % "1.0-SNAPSHOT"
 libraryDependencies += "factchecking" % "client" % "1.0"
+libraryDependencies += "de.mpii.exfakt" % "utils" % "1.0-SNAPSHOT"
 
 // Test Database
 libraryDependencies += "com.h2database" % "h2" % "1.4.194"
