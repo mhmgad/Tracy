@@ -10,11 +10,13 @@ lazy val root = (project in file(".")).enablePlugins(PlayJava)
 scalaVersion := "2.12.2"
 
 resolvers += "Local Maven" at Path.userHome.asFile.toURI.toURL + ".m2/repository"
+resolvers += Resolver.url("utils-repo", url("https://raw.github.com/mhmgad/MyUtils/mvn-repo/"))
 //unmanagedBase := baseDirectory.value / "libs"
 
 libraryDependencies += guice
 
 libraryDependencies += "factchecking" % "api" % "1.0"
+libraryDependencies += "de.mpii.exfakt" % "utils" % "1.0-SNAPSHOT"
 libraryDependencies += "factchecking" % "client" % "1.0"
 
 // Test Database
