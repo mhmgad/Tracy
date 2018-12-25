@@ -31,6 +31,13 @@ public class ExplainController extends Controller {
 
     }
 
+//        @Inject
+//    public ExplainController(final FormFactory formFactory ) {
+//        this.formFactory = formFactory;
+//        this.client=ExplanationExtractorClient.getInstance();
+//
+//    }
+
 
     /**
      * An action that renders an HTML page with a welcome message.

@@ -1,5 +1,12 @@
 import client.explain.ExplanationExtractorClient;
 import com.google.inject.AbstractModule;
+import play.Environment;
+import play.api.Play;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 /**
  * This class is a Guice module that tells Guice how to bind several
@@ -13,10 +20,30 @@ import com.google.inject.AbstractModule;
  */
 public class Module extends AbstractModule {
 
+    String propFileName="demo.properties";
+
     @Override
     public void configure() {
 
-    bind(ExplanationExtractorClient.class).toInstance(ExplanationExtractorClient.getInstance());
+
+        InputStream inputStream = Environment.simple().resourceAsStream(propFileName);
+
+        Properties prop=new Properties();
+
+        try {
+        if (inputStream != null) {
+
+                prop.load(inputStream);
+
+        } else {
+            throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+        }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    bind(ExplanationExtractorClient.class).toInstance(ExplanationExtractorClient.getInstance(prop.getProperty("server_url")));
 
     }
 
