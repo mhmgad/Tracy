@@ -38,8 +38,10 @@
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="1">
                                             <div class="form-group col-md-12 text-left">
-                                                <label class="col-form-label-lg">Rules</label>
+                                                @*<label class="col-form-label-lg">Rules</label>*@
+                                                <div class="row mt-4">
                                                 <textarea name="rules" class="form-control" rows="3" placeholder="a(?x,?y):- b(?x,?z), c(?z,?y)." >@query.getRules().trim()</textarea>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="2">
