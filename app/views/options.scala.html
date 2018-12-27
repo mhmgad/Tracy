@@ -1,119 +1,254 @@
 @import Models.QueryOptions
-@(options:QueryOptions)
+@(options: QueryOptions)
 
+@*<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.css" rel="stylesheet">*@
+@*<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.js"></script>*@
+@*<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.css" rel="stylesheet">*@
+
+<link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/switch.css")' type="text/css">
 
 <div class="py-1">
     <div class="row py-3 ">
         <div class="container">
 
             <h6>Knowledge Graphs</h6>
-            <hr>
+
             <div class="list-group">
-
-                <div class="list-group-item">   <input type="checkbox" label="Yago"> <labal>Yago</labal>
+                <div class="list-group-item">
+                    <div class="row">
+                        <div class="col-sm align-self-start">
+                            <labal>Yago</labal>
+                        </div>
+                        <div class="col-sm-2 align-self-end text-right">
+                            @*<input type="checkbox" checked data-toggle="toggle-sm" data-onstyle="success"   data-onstyle="danger" data-size="small">*@
+                            <label class="switch">
+                                <input type="checkbox" name="yago">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
 
                     @*<input type="checkbox" aria-label="Checkbox for following text input">*@
                 </div>
-                <div class="list-group-item"> <input type="checkbox" > <labal>Wikidata</labal>
-                    @*<input type="checkbox" aria-label="Checkbox for following text input">*@
-                </div>
-                <div class="list-group-item"> <input type="checkbox" > <labal>DBpedia</labal>
-                    @*<input type="checkbox" aria-label="Checkbox for following text input">*@
-                </div>
+                <div class="list-group-item">
+                    <div class="row">
+                        <div class="col-sm align-self-start">
+                            <labal>Wikidata</labal>
+                        </div>
+                        <div class="col-sm-2 align-self-end text-right">
+                            @*<input type="checkbox" checked data-toggle="toggle-sm" data-onstyle="success"   data-onstyle="danger" data-size="small">*@
+                            <label class="switch">
+                                <input type="checkbox" name="wikidata">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
 
+                    @*<input type="checkbox" aria-label="Checkbox for following text input">*@
+                </div>
+                @*<div class="list-group-item">*@
+                    @*<div class="row">*@
+                        @*<div class="col-sm align-self-start">*@
+                            @*<labal>Yago</labal>*@
+                        @*</div>*@
+                        @*<div class="col-sm align-self-end text-right">*@
+                            @*<input type="checkbox" checked data-toggle="toggle-sm" data-onstyle="success"   data-onstyle="danger" data-size="small">*@
+                            @*<label class="switch">*@
+                                @*<input type="checkbox" name="yago">*@
+                                @*<span class="slider round"></span>*@
+                            @*</label>*@
+                        @*</div>*@
+                    @*</div>*@
+
+                    @*<input type="checkbox" aria-label="Checkbox for following text input">*@
+                @*</div>*@
             </div>
-
 
 
         </div>
 
     </div>
+
 
     <div class="row py-3">
         <div class=" container">
 
             <h6>Textual Resources</h6>
-            <hr>
             <div class="list-group">
 
                 <div class="list-group-item">
-                    <div class="row align-items-center text-source">
-                        <div class="col-sm-4">
-                            <input type="checkbox" label="Yago"> <labal>Wikipedia</labal>
+                    <div class="row">
+                        <div class="col-sm align-self-start">
+                            <labal>Wikipedia</labal>
                         </div>
-                        <div class="col-sm-5">
-                            <div class="slidecontainer">
-                                <input type="range" min="1" max="100" value="50" class="slider" id="wiki-quality-range">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="input-group input-group-sm mb-3">
-                                <input value="50" class="form-control text-center" id="wiki-quality-val">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">%</span>
+
+                        <div class="col-sm-5 align-self-center text-center">
+                            <div class="input-group input-group-sm">
+
+
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-number" disabled="disabled" data-type="minus" data-field="Wikipedia_weight">
+                                        <span class="fas fa-minus fa-sm"></span>
+                                    </button>
                                 </div>
+                                <input type="text" name="Wikipedia_weight" class="form-control input-number" value="1" min="1" max="100">
+                                <div class="input-group-append">
+                                    @*<span class="input-group-btn">*@
+                                    @*<span class="input-group-text">%</span>*@
+                                    <button type="button" class="btn btn-number" data-type="plus" data-field="Wikipedia_weight">
+                                        <span class="fas fa-plus fa-sm"></span>
+                                    </button>
+                                    @*</span>*@
+                                </div>
+
+
                             </div>
+                        </div>
+                        <div class="col-sm-2 align-self-end text-right">
+                            @*<input type="checkbox" checked data-toggle="toggle-sm" data-onstyle="success"   data-onstyle="danger" data-size="small">*@
+                            <label class="switch">
+                                <input type="checkbox" name="yago">
+                                <span class="slider round"></span>
+                            </label>
                         </div>
                     </div>
 
 
-
-
-
-                    @*<input type="checkbox" aria-label="Checkbox for following text input">*@
                 </div>
+
+
                 <div class="list-group-item">
-                    <div class="row align-items-center text-source">
-                        <div class="col-sm-4">
-                            <input type="checkbox" > <labal>Web</labal>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="slidecontainer">
-                                <input type="range" min="1" max="100" value="50" class="slider" id="web-quality-range">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="input-group input-group-sm mb-3">
-                                <input value="50" class="form-control text-center" id="web-quality-val">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">%</span>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col-sm align-self-start">
+                            <labal>Web (Bing)</labal>
                         </div>
 
+                        <div class="col-sm-5 align-self-center text-center">
+                            <div class="input-group input-group-sm">
+
+
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-number" disabled="disabled" data-type="minus" data-field="web_weight">
+                                        <span class="fas fa-minus fa-sm"></span>
+                                    </button>
+                                </div>
+                                <input type="text" name="web_weight" class="form-control input-number" value="1" min="1" max="100">
+                                <div class="input-group-append">
+
+                                    <button type="button" class="btn btn-number" data-type="plus" data-field="web_weight">
+                                        <span class="fas fa-plus fa-sm"></span>
+                                    </button>
+                                    @*<span class="input-group-text-xs">%</span>*@
+                                    @*</span>*@
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-2 align-self-end text-right">
+                            @*<input type="checkbox" checked data-toggle="toggle-sm" data-onstyle="success"   data-onstyle="danger" data-size="small">*@
+                            <label class="switch">
+                                <input type="checkbox" name="yago">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
                     </div>
 
 
-
                 </div>
+
+
 
             </div>
-
 
 
         </div>
 
     </div>
 
-    <div class="row py-3">
+    <div class="row py-0">
         <div class=" container">
 
-            <h6>More Options</h6>
-            <hr>
+            <h6>Algorithm Options</h6>
+
             <div class="list-group">
 
                 <div class="list-group-item">
-                    <input type="checkbox" > <labal>Search KG for the candidate</labal>
+                    <div class="row">
+                        <div class="col-sm align-self-start">
+                            <labal>Search KG first</labal>
+                        </div>
+                        <div class="col-sm-2 align-self-end text-right">
+                            @*<input type="checkbox" checked data-toggle="toggle-sm" data-onstyle="success"   data-onstyle="danger" data-size="small">*@
+                            <label class="switch">
+                                <input type="checkbox" name="search_kg">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Number of rules to be used-->
                 <div class="list-group-item">
-                    <input type="checkbox" > <labal>Search KG for the candidate</labal>
+                    <div class="row">
 
+                        <div class="col-sm align-self-start text-left">
+                            <labels>Rules</labels>
+                        </div>
+                        <div class="col-sm-5 align-self-end text-right">
+                            <div class="input-group input-group-sm">
+
+
+                                <div class="input-group-prepend">
+                                        <button type="button" class="btn btn-number" disabled="disabled" data-type="minus" data-field="rules_num">
+                                            <span class="fas fa-minus fa-sm"></span>
+                                        </button>
+                                </div>
+                                    <input type="text" name="rules_num" class="form-control input-number" value="1" min="1" max="10">
+                                <div class="input-group-append">
+                                    @*<span class="input-group-btn">*@
+                                        <button type="button" class="btn btn-number" data-type="plus" data-field="rules_num">
+                                            <span class="fas fa-plus fa-sm"></span>
+                                        </button>
+                                    @*</span>*@
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="list-group-item">
-                    <input type="checkbox" > <labal>Search KG for the candidate</labal>
 
+                    <!-- Number of explanations-->
+                <div class="list-group-item">
+                    <div class="row">
+
+                        <div class="col-sm align-self-start text-left">
+                            <labels>Explanation</labels>
+                        </div>
+                        <div class="col-sm-5 align-self-end text-right">
+                            <div class="input-group input-group-sm">
+
+
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-number" disabled="disabled" data-type="minus" data-field="explan_num">
+                                        <span class="fas fa-minus fa-sm"></span>
+                                    </button>
+                                </div>
+                                <input type="text" name="explan_num" class="form-control input-number" value="1" min="1" max="5">
+                                <div class="input-group-append">
+                                    @*<span class="input-group-btn">*@
+                                    <button type="button" class="btn btn-number" data-type="plus" data-field="explan_num">
+                                        <span class="fas fa-plus fa-sm"></span>
+                                    </button>
+                                    @*</span>*@
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -123,3 +258,78 @@
 
 
 </div>
+
+<script type="text/javascript">
+        $('.btn-number').click(function (e) {
+            e.preventDefault();
+
+            fieldName = $(this).attr('data-field');
+            type = $(this).attr('data-type');
+            var input = $("input[name='" + fieldName + "']");
+            var currentVal = parseInt(input.val());
+            if (!isNaN(currentVal)) {
+                if (type == 'minus') {
+
+                    if (currentVal > input.attr('min')) {
+                        input.val(currentVal - 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('min')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                } else if (type == 'plus') {
+
+                    if (currentVal < input.attr('max')) {
+                        input.val(currentVal + 1).change();
+                    }
+                    if (parseInt(input.val()) == input.attr('max')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                }
+            } else {
+                input.val(0);
+            }
+        });
+        $('.input-number').focusin(function () {
+            $(this).data('oldValue', $(this).val());
+        });
+        $('.input-number').change(function () {
+
+            minValue = parseInt($(this).attr('min'));
+            maxValue = parseInt($(this).attr('max'));
+            valueCurrent = parseInt($(this).val());
+
+            name = $(this).attr('name');
+            if (valueCurrent >= minValue) {
+                $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the minimum value was reached');
+                $(this).val($(this).data('oldValue'));
+            }
+            if (valueCurrent <= maxValue) {
+                $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the maximum value was reached');
+                $(this).val($(this).data('oldValue'));
+            }
+
+
+        });
+        $(".input-number").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+                    // Allow: Ctrl+A
+                    (e.keyCode == 65 && e.ctrlKey === true) ||
+                    // Allow: home, end, left, right
+                    (e.keyCode >= 35 && e.keyCode <= 39)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+
+</script>

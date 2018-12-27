@@ -2,12 +2,12 @@
 @(explan: Explanation, index: Int)
 <dd data-generation="@explan.getGenOrder()" data-quality="@(1-explan.getQuality())"  data-length="@explan.size()" data-depth="@explan.getRulesEvidencesCount()" data-cost="@explan.getCost().getTotalCost()" class="explan-card">
 <div class="card border-dark m-1">
-    <div class="card-header">
+    <div class="card-header card-header-sm">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-sm">
                 <h5>Explanation #@{index + 1}</h5>
             </div>
-            <div class="col-md-2">
+            <div class="col-sm align-self-end text-right">
                 <h6> Quality: @("%.3f".format(explan.getQuality())) </h6>
                             </div>
             @*<div class="col-md-6">*@

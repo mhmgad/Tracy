@@ -22,8 +22,15 @@ libraryDependencies += "de.mpii.exfakt" % "utils" % "1.0-SNAPSHOT"
 // Test Database
 libraryDependencies += "com.h2database" % "h2" % "1.4.194"
 
-libraryDependencies += "org.webjars" % "bootstrap" % "4.0.0-beta-1"
-libraryDependencies += "org.webjars" % "font-awesome" % "5.0.2"
+//libraryDependencies += "org.webjars" % "bootstrap" % "4.0.0-beta-1"
+libraryDependencies += "org.webjars" % "bootstrap" % "4.1.3"
+libraryDependencies += "org.webjars" % "font-awesome" % "5.6.1"
+libraryDependencies += "org.webjars" % "jquery" % "3.3.1-1"
+//libraryDependencies += "org.webjars" % "font-awesome" % "5.0.2"
+// https://mvnrepository.com/artifact/org.webjars.bower/popper.js
+libraryDependencies += "org.webjars.bower" % "popper.js" % "1.14.4"
+
+
 
 // Testing libraries for dealing with CompletionStage...
 libraryDependencies += "org.assertj" % "assertj-core" % "3.6.2" % Test

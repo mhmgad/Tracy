@@ -3,6 +3,8 @@
 @(query:Query, explanations: IQueryExplanations)
 <div class="py-2 px-0">
 
+    @*<script data-main="@routes.Assets.versioned("javascripts/checkboxes.js")" type="text/javascript" src="@routes.Assets.versioned("javascripts/checkboxes.js")" ></script>*@
+
     <div class="container">
         @if(explanations!=null) {
             <h3>Explanations for <strong> @explanations.getQueryAsFact().toSearchableString() </strong> </h3>
@@ -50,15 +52,17 @@
 
 
     <div class="container">
+
+        <!--
         <div class="row">
-           @* <div class="col-md-4">
-                <h4> Sort By: </h4>
+            @* <div class="col-md-4">
+            <h4> Sort By: </h4>
             </div>
             <div class="col-md-8 pull-right">
-*@
-        <div class="col-md-12">
-            <label for="sorting-group">Sort by:</label>
-                <div id="sorting-group" class="btn-group justify-content-end" data-toggle="buttons">
+            *@
+            <div class="col-md-12">
+                <label for="sorting-group">Sort by:</label>
+                <div id="sorting-group" class="form-control btn-group align-self-right" data-toggle="buttons">
                     <label class="btn btn-light active">
                         <input type="radio" name="generation" id="option1" autocomplete="off" checked class="sorting"> Generation
                     </label>
@@ -77,6 +81,63 @@
                 </div>
             </div>
         </div>
+    -->
+    <div class="row">
+        @* <div class="col-md-4">
+        <h4> Sort By: </h4>
+        </div>
+        <div class="col-md-8 pull-right">
+        *@
+        <div class="col-sm align-self-end text-right">
+            <label for="sorting-group">Sort by:</label>
+            @*<div class="custom-control custom-radio custom-control-inline">*@
+                @*<input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">*@
+                @*<label class="custom-control-label" for="customRadioInline1">Generation</label>*@
+            @*</div>*@
+
+
+<!-- data-toggle="buttons"-->
+            <div id="sorting-group" class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-light active">
+                    <input type="radio" name="sort" id="generation" autocomplete="off" checked > Generation
+                </label>
+                <label class="btn btn-light">
+                    <input type="radio" name="sort" id="quality" autocomplete="off" > Quality
+                </label>
+                <label class="btn btn-light">
+                    <input type="radio" name="sort" id="length" autocomplete="off" > Length
+                </label>
+                <label class="btn btn-light">
+                    <input type="radio" name="sort" id="depth" autocomplete="off" > Depth
+                </label>
+                <label class="btn btn-light">
+                    <input type="radio" name="sort" id="cost" autocomplete="off" > Cost
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!--
+        <div class="row">
+            @* <div class="col-md-4">
+            <h4> Sort By: </h4>
+            </div>
+            <div class="col-md-8 pull-right">
+            *@
+            <div class="col-md-12">
+                <label for="sorting-group">Sort by:</label>
+                <div id="sorting-group" class="btn-group bt-group-sm" data-toggle="buttons">
+                    <button type="button" name="generation" id="option1" autocomplete="off" checked class="btn sorting"> Generation </button>
+                        <button type="button" name="quality" id="option2" autocomplete="off" class="btn sorting"> Quality </button>
+                        <button type="button" name="length" id="option3" autocomplete="off" class="btn sorting"> Length </button>
+                        <button type="button" name="depth" id="option3" autocomplete="off" class="btn sorting"> Depth </button>
+                        <button type="button" name="cost" id="option3" autocomplete="off" class="btn sorting"> Cost </button>
+                </div>
+            </div>
+        </div>
+    -->
+
+            <!--
         <script>
                 $(document).ready(function() {
                     $('input[type=radio]').change(function() {
@@ -91,18 +152,39 @@
                 });
 
         </script>
+        -->
 
-    <div class="row">
-        <div class="col-md-12">
-            <ul class="explans">
-        @for((explan, index) <- explanations.getExplanations().zipWithIndex) {
-            @explan_card(explan,index)
-        }
-            </ul>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="explans">
+                @for((explan, index) <- explanations.getExplanations().zipWithIndex) {
+                    @explan_card(explan,index)
+                }
+                </div>
+            </div>
+
         </div>
 
+        }
     </div>
 
-}
-    </div>
+
+    <script>
+            $(document).ready(function() {
+                $('input:radio[name="sort"]').change(function() {
+                    var method=this.id
+                    // alert("method: "+method)
+                    $(".explans").each(function(){
+                        $(this).html($(this).children('dd').sort(function(a, b){
+                            // alert(" values: "+ $(b).data(method) + $(a).data(method));
+                            return ($(b).data(method)) < ($(a).data(method)) ? 1 : -1;
+                        }));
+                    });
+
+                });
+            });
+
+    </script>
+
+
 
