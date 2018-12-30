@@ -7,7 +7,7 @@
 
     <div class="container">
         @if(explanations!=null) {
-            <h3>Explanations for <strong> @explanations.getQueryAsFact().toSearchableString() </strong> </h3>
+            <h5 > Explanations for why ''<strong class="text-info">@explanations.getQueryAsReadableString()</strong>''  may be true.</h5>
             <hr>
             }else{
 
