@@ -1,0 +1,9 @@
+@import de.mpii.datastructures.Fact;
+@import basics.FactComponent;
+@import de.mpii.dataprocessing.util.FactUtils;
+
+@(fact: Fact)
+
+<a href="@FactComponent.stripBrackets(FactComponent.wikipediaURL(fact.getSubject()))"  target="_blank"> @fact.getReadableSubject()</a>
+<span> @FactUtils.getReadablePredicateName(fact.getPredicate())</span>
+<a href="@FactComponent.stripBrackets(FactComponent.wikipediaURL(fact.getObject()))"  target="_blank">  @fact.getReadableObject()</a>

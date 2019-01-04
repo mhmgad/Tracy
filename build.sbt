@@ -18,6 +18,8 @@ libraryDependencies += guice
 libraryDependencies += "factchecking" % "api" % "1.0"
 libraryDependencies += "factchecking" % "client" % "1.0"
 libraryDependencies += "de.mpii.exfakt" % "utils" % "1.0-SNAPSHOT"
+libraryDependencies += "de.mpg.mpi-inf" % "basics3" % "1.1"
+
 
 // Test Database
 libraryDependencies += "com.h2database" % "h2" % "1.4.194"

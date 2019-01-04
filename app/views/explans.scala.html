@@ -1,5 +1,9 @@
 @import extendedsldnf.datastructure.IQueryExplanations
 @import web.data.Query
+@import basics.FactComponent;
+@import de.mpii.dataprocessing.util.FactUtils;
+
+
 @(query:Query, explanations: IQueryExplanations)
 <div class="py-2 px-0">
 
@@ -7,7 +11,13 @@
 
     <div class="container">
         @if(explanations!=null) {
-            <h5 > Explanations for why ''<strong class="text-info">@explanations.getQueryAsReadableString()</strong>''  may be true.</h5>
+            <h5 > Explanations for why ''<strong>
+                @*<a href="@FactComponent.stripBrackets(FactComponent.wikipediaURL(explanations.getQueryAsFact().getSubject()))"  target="_blank"> @explanations.getQueryAsFact().getReadableSubject()</a>*@
+                @* @explanations.getQueryAsReadableString() *@
+                @*<span> @FactUtils.getReadablePredicateName(explanations.getQueryAsFact().getPredicate())</span>*@
+                @*<a href="@FactComponent.stripBrackets(FactComponent.wikipediaURL(explanations.getQueryAsFact().getObject()))"  target="_blank">  @explanations.getQueryAsFact().getReadableObject()</a>*@
+                @fact(explanations.getQueryAsFact())
+            </strong>''  may be true.</h5>
             <hr>
             }else{
 

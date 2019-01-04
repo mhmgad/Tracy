@@ -7,6 +7,7 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.*;
+import basics.FactComponent;
 
 import views.html.*;
 import web.data.Query;
@@ -48,7 +49,7 @@ public class ExplainController extends Controller {
     public Result index() {
 
 //        Query exampleQ = new Query("<Albert_Einstein>", "<wasBornIn>", "<Germany>",  "wasBornIn(?x,?y):- birthPlace(?x,?z), in(?z,?y).\nwasBornIn(?x,?y):-  birthPlace(?x,?z), city_in(?z,?y).\n wasBornIn(?x,?y):-  wasBornIn(?x,?z), isA(?z,'city'), isLocatedIn(?z,?y), ?z!=?y.");
-        Query exampleQ = new Query("<Albert_Einstein>", "<wasBornIn>", "<Germany>",  "wasBornIn(?x,?y):- isA(?y,'city').\nwasBornIn(?x,?y):- birthPlace(?x,?z), in(?z,?y).");
+        Query exampleQ = new Query("Albert_Einstein", "wasBornIn", "Germany",  "wasBornIn(?x,?y):- isA(?y,'city').\nwasBornIn(?x,?y):- birthPlace(?x,?z), in(?z,?y).");
 
         return ok(index.render(exampleQ,null));
     }
@@ -57,6 +58,8 @@ public class ExplainController extends Controller {
     public Result explain() {
         Form<Query> qf=formFactory.form(Query.class).bindFromRequest();
         Query q=qf.get();
+        q.setSubject(FactComponent.forUri(q.getSubject()));
+        q.setObject(FactComponent.forUri(q.getObject()));
         System.out.println("explain "+q);
 //        Query exampleQ = new Query("<Albert_Einstein>", "<wasBornIn>", "<Germany>", "wasBornIn(?x,?y):- birthPlace(?x,?z), in(?z,?y).\nwasBornIn(?x,?y):-  birthPlace(?x,?z), city_in(?z,?y).");
 
