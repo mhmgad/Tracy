@@ -40,14 +40,14 @@
                                         <!-- <div class="list-group-item d-flex justify-content-between align-items-center" > -->
                                     <div class="list-group-item" >
                                         <div class="row m-0">
-                                            <div class="col-sm self-align-start">
+                                            <div class="col-sm-9 self-align-start">
                                                 <strong><em>@fact(node.getQueryAsFact())</em></strong>
                                             </div>
 
 
                                             <div class="col-sm self-align-end text-right">
                                             @if(node.getSourceActionType().toString().startsWith("TEXT")) {
-                                                <a class="badge badge-pill badge-warning self-align-end" data-toggle="collapse" href="#textE@{index}-@{eviIndex}">Source: Text </a>
+                                                <a class="badge badge-pill badge-warning self-align-end" data-toggle="collapse" href="#textE@{index}-@{eviIndex}"> <span class="fas fa-plus fa-xs"></span> Source: Text </a>
                                             } else {
 
                                                 <a class="badge badge-pill badge-success">Source: KG</a>
@@ -66,8 +66,7 @@
                                                 <lu>
                                                     @if(node.getSourceActionType().toString().startsWith("TEXT")) {
                                                         @for(doc <- node.getTextResults().getEvidence().getDocuments()) {
-                                                            <li>(<a href="@doc.getUrl()">@doc.getTitle()</a>
-                                                                ) @doc.getText()</li>
+                                                            <li>(Page: <a href="@doc.getUrl()">@doc.getTitle()</a>) <br/>@doc.getText()</li>
 
                                                         }
                                                     }

@@ -1,4 +1,6 @@
 @import web.data.Query
+@import basics.FactComponent;
+
 @(query: Query)
 <div class="py-2 text-center">
     <div class="container">
@@ -9,13 +11,13 @@
                         @*<div class="container">*@
                         <div class="form-row justify-content-center align-baseline">
                             <div class="form-group col-md-3">
-                                <input name="subject" class="form-control text-center m-1" placeholder="<Albert_Einstein>" value="@query.getSubject()">
+                                <input name="subject" class="form-control m-1" placeholder="Albert_Einstein" value="@FactComponent.stripBrackets(query.getSubject())">
                             </div>
-                            <div class="form-group col-md-3">
-                                <input name="predicate" class="form-control m-1 text-center" placeholder="<wasBornIn>" value="@query.getPredicate()">
+                            <div class="form-group col-md-3" id="scrollable-dropdown-menu">
+                                <input name="predicate" class="form-control m-1 typeahead" placeholder="wasBornIn" value="@FactComponent.stripBrackets(query.getPredicate())">
                             </div>
-                            <div class="form-group col-md-3">
-                                <input name="object" class="form-control m-1 text-center" placeholder="<Germany>" value="@query.getObject()">
+                            <div class="form-group col-md-3 " >
+                                <input name="object" class="form-control m-1" placeholder="Germany" value="@FactComponent.stripBrackets(query.getObject())">
                             </div>
 
                             <div class="form-group col-md-3">
@@ -76,3 +78,95 @@
         </div>
     </div>
 </div>
+
+
+
+    <script>
+        var substringMatcher = function(strs) {
+            return function findMatches(q, cb) {
+                var matches, substringRegex;
+
+                // an array that will be populated with substring matches
+                matches = [];
+
+                // regex used to determine if a string contains the substring `q`
+                substrRegex = new RegExp(q, 'i');
+
+                // iterate through the pool of strings and for any string that
+                // contains the substring `q`, add it to the `matches` array
+                $.each(strs, function(i, str) {
+                    if (substrRegex.test(str["value"])) {
+                        matches.push(str);
+                    }
+                });
+
+                cb(matches);
+            };
+        };
+
+        // var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+        //     'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
+        //     'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+        //     'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
+        //     'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+        //     'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+        //     'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+        //     'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+        //     'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+        // ];
+
+        var states = [{"value":"actedIn"},
+            {"value":"byTransport"},
+            {"value":"created"},
+            {"value":"dealsWith"},
+            {"value":"diedIn"},
+            {"value":"directed"},
+            {"value":"edited"},
+            {"value":"graduatedFrom"},
+            {"value":"happenedIn"},
+            {"value":"hasAcademicAdvisor"},
+            {"value":"hasCapital"},
+            {"value":"hasChild"},
+            {"value":"hasCurrency"},
+            {"value":"hasDuration"},
+            {"value":"hasGender"},
+            {"value":"hasMusicalRole"},
+            {"value":"hasOfficialLanguage"},
+            {"value":"hasWonPrize"},
+            {"value":"influences"},
+            {"value":"isAffiliatedTo"},
+            {"value":"isCitizenOf"},
+            {"value":"isConnectedTo"},
+            {"value":"isInterestedIn"},
+            {"value":"isKnownFor"},
+            {"value":"isLeaderOf"},
+            {"value":"isLocatedIn"},
+            {"value":"isMarriedTo"},
+            {"value":"isPoliticianOf"},
+            {"value":"livesIn"},
+            {"value":"owns"},
+            {"value":"participatedIn"},
+            {"value":"playsFor"},
+            {"value":"wasBornIn"},
+            {"value":"worksAt"},
+            {"value":"wroteMusicFor"}];
+
+
+
+        $('#scrollable-dropdown-menu .typeahead').typeahead({
+                    hint: true,
+                    highlight: true,
+                    minLength: 1
+                },
+                {
+                    name: 'states',
+                    display: 'value',
+                    source: substringMatcher(states),
+                    templates: {
+                        suggestion: Handlebars.compile('<div class="list-group-item col-xs-10"><strong>{{value}}</strong></div>')
+                    }
+
+                });
+
+
+    </script>

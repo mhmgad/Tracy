@@ -1,7 +1,9 @@
 
 @import extendedsldnf.datastructure.IQueryExplanations
 @import web.data.Query
-@(query: Query,explanations:IQueryExplanations)
+@import Models.ExampleQueries
+
+@(query: Query, exampleQueries: ExampleQueries, explanations:IQueryExplanations)
 
 @* @implicitFC = @{ b4.horizontal.fieldConstructor("col-md-2", "col-md-10") } *@
 
@@ -21,7 +23,7 @@
  * argument is a `String` with the title of the page, the second
  * argument is an `Html` object containing the body of the page.
  *@
-@main("Explain Query") {
+@main("Explain Query", exampleQueries) {
 
 
  @explain_form(query)

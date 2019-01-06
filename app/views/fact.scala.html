@@ -4,6 +4,4 @@
 
 @(fact: Fact)
 
-<a href="@FactComponent.stripBrackets(FactComponent.wikipediaURL(fact.getSubject()))"  target="_blank"> @fact.getReadableSubject()</a>
-<span> @FactUtils.getReadablePredicateName(fact.getPredicate())</span>
-<a href="@FactComponent.stripBrackets(FactComponent.wikipediaURL(fact.getObject()))"  target="_blank">  @fact.getReadableObject()</a>
+<a href="@FactComponent.stripBrackets(FactComponent.wikipediaURL(fact.getSubject()))"  target="_blank"> @fact.getReadableSubject()</a>  @FactUtils.getReadablePredicateName(fact.getPredicate()) <a href="@FactComponent.stripBrackets(FactComponent.wikipediaURL(fact.getObject()))"  target="_blank">  @fact.getReadableObject()</a>

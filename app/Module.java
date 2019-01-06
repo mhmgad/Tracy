@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import Models.ExampleQueries;
+
 /**
  * This class is a Guice module that tells Guice how to bind several
  * different types. This Guice module is created when the Play
@@ -44,6 +46,7 @@ public class Module extends AbstractModule {
 
 
     bind(ExplanationExtractorClient.class).toInstance(ExplanationExtractorClient.getInstance(prop.getProperty("server_url")));
+        bind(ExampleQueries.class).toInstance(ExampleQueries.getInstance());
 
     }
 

@@ -14,6 +14,8 @@ import web.data.Query;
 
 import java.io.IOException;
 
+import Models.ExampleQueries;
+
 /**
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
@@ -25,10 +27,16 @@ public class ExplainController extends Controller {
     private final FormFactory formFactory;
     private final ExplanationExtractorClient client;
 
+    private final ExampleQueries exampleQueries;
+
+
+
     @Inject
-    public ExplainController(final FormFactory formFactory,  ExplanationExtractorClient client ) {
+    public ExplainController(final FormFactory formFactory,  ExplanationExtractorClient client, ExampleQueries exampleQueries) {
         this.formFactory = formFactory;
         this.client=client;
+        this.exampleQueries=exampleQueries;
+
 
     }
 
@@ -49,9 +57,21 @@ public class ExplainController extends Controller {
     public Result index() {
 
 //        Query exampleQ = new Query("<Albert_Einstein>", "<wasBornIn>", "<Germany>",  "wasBornIn(?x,?y):- birthPlace(?x,?z), in(?z,?y).\nwasBornIn(?x,?y):-  birthPlace(?x,?z), city_in(?z,?y).\n wasBornIn(?x,?y):-  wasBornIn(?x,?z), isA(?z,'city'), isLocatedIn(?z,?y), ?z!=?y.");
-        Query exampleQ = new Query("Albert_Einstein", "wasBornIn", "Germany",  "wasBornIn(?x,?y):- isA(?y,'city').\nwasBornIn(?x,?y):- birthPlace(?x,?z), in(?z,?y).");
+//        Query exampleQ = new Query("Albert_Einstein", "wasBornIn", "Germany",  "wasBornIn(?x,?y):- isA(?y,'city').\nwasBornIn(?x,?y):- birthPlace(?x,?z), in(?z,?y).");
 
-        return ok(index.render(exampleQ,null));
+        Query exampleQ=exampleQueries.get(1);
+
+        return ok(index.render(exampleQ,exampleQueries ,null));
+    }
+
+    public Result example(int id) {
+
+//        Query exampleQ = new Query("<Albert_Einstein>", "<wasBornIn>", "<Germany>",  "wasBornIn(?x,?y):- birthPlace(?x,?z), in(?z,?y).\nwasBornIn(?x,?y):-  birthPlace(?x,?z), city_in(?z,?y).\n wasBornIn(?x,?y):-  wasBornIn(?x,?z), isA(?z,'city'), isLocatedIn(?z,?y), ?z!=?y.");
+//        Query exampleQ = new Query("Albert_Einstein", "wasBornIn", "Germany",  "wasBornIn(?x,?y):- isA(?y,'city').\nwasBornIn(?x,?y):- birthPlace(?x,?z), in(?z,?y).");
+
+        Query exampleQ=exampleQueries.get(id);
+
+        return ok(index.render(exampleQ,exampleQueries ,null));
     }
 
 
@@ -70,7 +90,7 @@ public class ExplainController extends Controller {
             return internalServerError("Error connecting to server!");
         }
 
-        return ok(index.render(q,queryExplanations));
+        return ok(index.render(q,exampleQueries,queryExplanations));
     }
 
 

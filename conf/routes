@@ -10,3 +10,5 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 POST     /                           controllers.ExplainController.explain
 
+GET     /:id                        controllers.ExplainController.example(id: Int)
+

@@ -31,6 +31,8 @@ libraryDependencies += "org.webjars" % "jquery" % "3.3.1-1"
 //libraryDependencies += "org.webjars" % "font-awesome" % "5.0.2"
 // https://mvnrepository.com/artifact/org.webjars.bower/popper.js
 libraryDependencies += "org.webjars.bower" % "popper.js" % "1.14.4"
+// https://mvnrepository.com/artifact/org.webjars.bower/typeahead.js
+//libraryDependencies += "org.webjars.bower" % "typeahead.js" % "0.11.1" exclude("org.webjars.bower", "jquery")
 
 
 

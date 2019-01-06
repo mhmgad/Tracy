@@ -8,6 +8,9 @@
 <link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/switch.css")' type="text/css">
 
 <div class="py-1">
+    <div class="row alert alert-danger" role="alert">
+        The following options are not yet functional!
+    </div>
     <div class="row py-3 ">
         <div class="container">
 
@@ -22,7 +25,7 @@
                         <div class="col-sm-2 align-self-end text-right">
                             @*<input type="checkbox" checked data-toggle="toggle-sm" data-onstyle="success"   data-onstyle="danger" data-size="small">*@
                             <label class="switch">
-                                <input type="checkbox" name="yago">
+                                <input type="checkbox" name="yago" checked>
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -86,20 +89,23 @@
                             <div class="input-group input-group-sm">
 
 
-                                <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-number" disabled="disabled" data-type="minus" data-field="Wikipedia_weight">
-                                        <span class="fas fa-minus fa-sm"></span>
-                                    </button>
-                                </div>
-                                <input type="text" name="Wikipedia_weight" class="form-control input-number" value="1" min="1" max="100">
-                                <div class="input-group-append">
+                                @*<div class="input-group-prepend">*@
+                                    @*<button type="button" class="btn btn-number"  data-type="minus" data-field="Wikipedia_weight">*@
+                                        @*<span class="fas fa-minus fa-sm"></span>*@
+                                    @*</button>*@
+                                @*</div>*@
+                            <div class="input-group-prepend">
+                                <span class="input-group-text small" id="basic-addon3">Weight</span>
+                            </div>
+                                <input type="number" name="Wikipedia_weight" class="form-control input-number" value="0.5" min="0" max="1" step="0.05">
+                                @*<div class="input-group-append">*@
                                     @*<span class="input-group-btn">*@
                                     @*<span class="input-group-text">%</span>*@
-                                    <button type="button" class="btn btn-number" data-type="plus" data-field="Wikipedia_weight">
-                                        <span class="fas fa-plus fa-sm"></span>
-                                    </button>
+                                    @*<button type="button" class="btn btn-number" data-type="plus" data-field="Wikipedia_weight">*@
+                                        @*<span class="fas fa-plus fa-sm"></span>*@
+                                    @*</button>*@
                                     @*</span>*@
-                                </div>
+                                @*</div>*@
 
 
                             </div>
@@ -107,7 +113,7 @@
                         <div class="col-sm-2 align-self-end text-right">
                             @*<input type="checkbox" checked data-toggle="toggle-sm" data-onstyle="success"   data-onstyle="danger" data-size="small">*@
                             <label class="switch">
-                                <input type="checkbox" name="yago">
+                                <input type="checkbox" name="wikipedia" checked>
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -127,20 +133,23 @@
                             <div class="input-group input-group-sm">
 
 
+                                @*<div class="input-group-prepend">*@
+                                    @*<button type="button" class="btn btn-number" data-type="minus" data-field="web_weight">*@
+                                        @*<span class="fas fa-minus fa-sm"></span>*@
+                                    @*</button>*@
+                                @*</div>*@
                                 <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-number" disabled="disabled" data-type="minus" data-field="web_weight">
-                                        <span class="fas fa-minus fa-sm"></span>
-                                    </button>
+                                    <span class="input-group-text small" id="basic-addon3">Weight</span>
                                 </div>
-                                <input type="text" name="web_weight" class="form-control input-number" value="1" min="1" max="100">
-                                <div class="input-group-append">
+                                <input type="number" name="web_weight" class="form-control input-number" value="0.5" min="0" max="1" step="0.05">
+                                @*<div class="input-group-append">*@
 
-                                    <button type="button" class="btn btn-number" data-type="plus" data-field="web_weight">
-                                        <span class="fas fa-plus fa-sm"></span>
-                                    </button>
+                                    @*<button type="button" class="btn btn-number" data-type="plus" data-field="web_weight">*@
+                                        @*<span class="fas fa-plus fa-sm"></span>*@
+                                    @*</button>*@
                                     @*<span class="input-group-text-xs">%</span>*@
                                     @*</span>*@
-                                </div>
+                                @*</div>*@
 
 
                             </div>
@@ -204,7 +213,7 @@
                                             <span class="fas fa-minus fa-sm"></span>
                                         </button>
                                 </div>
-                                    <input type="text" name="rules_num" class="form-control input-number" value="1" min="1" max="10">
+                                    <input type="text" name="rules_num" class="form-control input-number" value="3" min="1" max="10" step="1">
                                 <div class="input-group-append">
                                     @*<span class="input-group-btn">*@
                                         <button type="button" class="btn btn-number" data-type="plus" data-field="rules_num">
@@ -236,7 +245,7 @@
                                         <span class="fas fa-minus fa-sm"></span>
                                     </button>
                                 </div>
-                                <input type="text" name="explan_num" class="form-control input-number" value="1" min="1" max="5">
+                                <input type="text" name="explan_num" class="form-control input-number" value="5" min="1" max="10" step="1">
                                 <div class="input-group-append">
                                     @*<span class="input-group-btn">*@
                                     <button type="button" class="btn btn-number" data-type="plus" data-field="explan_num">
@@ -266,23 +275,25 @@
             fieldName = $(this).attr('data-field');
             type = $(this).attr('data-type');
             var input = $("input[name='" + fieldName + "']");
-            var currentVal = parseInt(input.val());
+            var currentVal = parseFloat(input.val());
+            var stepValue = parseFloat(input.attr('step'));
+
             if (!isNaN(currentVal)) {
                 if (type == 'minus') {
 
                     if (currentVal > input.attr('min')) {
-                        input.val(currentVal - 1).change();
+                        input.val(currentVal - stepValue).change();
                     }
-                    if (parseInt(input.val()) == input.attr('min')) {
+                    if (parseFloat(input.val()) <= input.attr('min')) {
                         $(this).attr('disabled', true);
                     }
 
                 } else if (type == 'plus') {
 
                     if (currentVal < input.attr('max')) {
-                        input.val(currentVal + 1).change();
+                        input.val(currentVal + stepValue).change();
                     }
-                    if (parseInt(input.val()) == input.attr('max')) {
+                    if (parseFloat(input.val()) >= input.attr('max')) {
                         $(this).attr('disabled', true);
                     }
 
@@ -291,27 +302,29 @@
                 input.val(0);
             }
         });
+
         $('.input-number').focusin(function () {
             $(this).data('oldValue', $(this).val());
         });
+
         $('.input-number').change(function () {
 
-            minValue = parseInt($(this).attr('min'));
-            maxValue = parseInt($(this).attr('max'));
-            valueCurrent = parseInt($(this).val());
+            minValue = parseFloat($(this).attr('min'));
+            maxValue = parseFloat($(this).attr('max'));
+            valueCurrent = parseFloat($(this).val());
 
             name = $(this).attr('name');
             if (valueCurrent >= minValue) {
                 $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
             } else {
-                alert('Sorry, the minimum value was reached');
-                $(this).val($(this).data('oldValue'));
+                // alert('Sorry, the minimum value was reached');
+                // $(this).val($(this).data('oldValue'));
             }
             if (valueCurrent <= maxValue) {
                 $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
             } else {
-                alert('Sorry, the maximum value was reached');
-                $(this).val($(this).data('oldValue'));
+                // alert('Sorry, the maximum value was reached');
+                // $(this).val($(this).data('oldValue'));
             }
 
 
