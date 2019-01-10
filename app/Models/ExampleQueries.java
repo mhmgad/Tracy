@@ -19,6 +19,8 @@ public class ExampleQueries{
         examples.add(new Query(1,"Einstein 1","<Albert_Einstein>", "<wasBornIn>", "<Germany>",  "wasBornIn(?x,?y):- birthPlace(?x,?z), in(?z,?y).\nwasBornIn(?x,?y):-  birthPlace(?x,?z), city_in(?z,?y).\n wasBornIn(?x,?y):-  wasBornIn(?x,?z), isA(?z,'city'), isLocatedIn(?z,?y), ?z!=?y."));
 
         examples.add(new Query(2,"Einstein 2","Albert_Einstein", "wasBornIn", "Germany",  "wasBornIn(?x,?y):- wasBornIn(?x,?z), in(?z,?y).\nin(?x,?y):-  isLocatedIn(?x,?z),  isLocatedIn(?z,?y)."));
+        examples.add(new Query(3,"Sadiq Khan","Sadiq_Khan", "isCitizenOf", "United_Kingdom",  "isCitizenOf(?x,?y):- hasCapital(?y,?z), mayorOf(?x,?z).\n" +
+                "isCitizenOf(?x,?y):-  wasBornIn(?x,?z), isLocatedIn(?z,?y)."));
     }
 
 

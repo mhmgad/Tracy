@@ -2,10 +2,11 @@
 @import web.data.Query
 @import basics.FactComponent;
 @import de.mpii.dataprocessing.util.FactUtils;
+@import utils.Enums;
 
 
 @(query:Query, explanations: IQueryExplanations)
-<div class="py-2 px-0">
+<div class="px-0">
 
     @*<script data-main="@routes.Assets.versioned("javascripts/checkboxes.js")" type="text/javascript" src="@routes.Assets.versioned("javascripts/checkboxes.js")" ></script>*@
 
@@ -26,7 +27,7 @@
     </div>
 
     @if(explanations == null) {
-        <div class="py-2">
+        <div class="py-1">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -44,7 +45,7 @@
     </div>
 } else {
     @if(explanations.size() == 0) {
-        <div class="py-2">
+        <div class="py-1">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

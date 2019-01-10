@@ -8,10 +8,10 @@
 <link rel='stylesheet' href='@routes.Assets.versioned("stylesheets/switch.css")' type="text/css">
 
 <div class="py-1">
-    <div class="row alert alert-danger" role="alert">
-        The following options are not yet functional!
-    </div>
-    <div class="row py-3 ">
+    @*<div class="row alert alert-danger" role="alert">*@
+        @*The following options are not yet functional!*@
+    @*</div>*@
+    <div class="row pl-2">
         <div class="container">
 
             <h6>Knowledge Graphs</h6>
@@ -73,7 +73,7 @@
     </div>
 
 
-    <div class="row py-3">
+    <div class="row py-3 pl-2">
         <div class=" container">
 
             <h6>Textual Resources</h6>
@@ -95,7 +95,7 @@
                                     @*</button>*@
                                 @*</div>*@
                             <div class="input-group-prepend">
-                                <span class="input-group-text small" id="basic-addon3">Weight</span>
+                                <span class="input-group-text small" id="basic-addon3">Trust</span>
                             </div>
                                 <input type="number" name="Wikipedia_weight" class="form-control input-number" value="0.5" min="0" max="1" step="0.05">
                                 @*<div class="input-group-append">*@
@@ -139,7 +139,7 @@
                                     @*</button>*@
                                 @*</div>*@
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text small" id="basic-addon3">Weight</span>
+                                    <span class="input-group-text small" id="basic-addon3">Trust</span>
                                 </div>
                                 <input type="number" name="web_weight" class="form-control input-number" value="0.5" min="0" max="1" step="0.05">
                                 @*<div class="input-group-append">*@
@@ -175,34 +175,34 @@
 
     </div>
 
-    <div class="row py-0">
+    <div class="row py-0 pl-2">
         <div class=" container">
 
-            <h6>Algorithm Options</h6>
+            <h6>Other Parameters</h6>
 
             <div class="list-group">
 
-                <div class="list-group-item">
-                    <div class="row">
-                        <div class="col-sm align-self-start">
-                            <labal>Search KG first</labal>
-                        </div>
-                        <div class="col-sm-2 align-self-end text-right">
+                @*<div class="list-group-item">*@
+                    @*<div class="row">*@
+                        @*<div class="col-sm align-self-start">*@
+                            @*<labal>Search KG first</labal>*@
+                        @*</div>*@
+                        @*<div class="col-sm-2 align-self-end text-right">*@
                             @*<input type="checkbox" checked data-toggle="toggle-sm" data-onstyle="success"   data-onstyle="danger" data-size="small">*@
-                            <label class="switch">
-                                <input type="checkbox" name="search_kg">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                            @*<label class="switch">*@
+                                @*<input type="checkbox" name="search_kg">*@
+                                @*<span class="slider round"></span>*@
+                            @*</label>*@
+                        @*</div>*@
+                    @*</div>*@
+                @*</div>*@
 
                 <!-- Number of rules to be used-->
                 <div class="list-group-item">
                     <div class="row">
 
                         <div class="col-sm align-self-start text-left">
-                            <labels>Rules</labels>
+                            <labels>#Rules</labels>
                         </div>
                         <div class="col-sm-5 align-self-end text-right">
                             <div class="input-group input-group-sm">
@@ -234,7 +234,7 @@
                     <div class="row">
 
                         <div class="col-sm align-self-start text-left">
-                            <labels>Explanation</labels>
+                            <labels>#Explanations</labels>
                         </div>
                         <div class="col-sm-5 align-self-end text-right">
                             <div class="input-group input-group-sm">

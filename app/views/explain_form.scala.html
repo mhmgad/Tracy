@@ -9,24 +9,28 @@
                 <form class="text-center justify-content-center" method="post" action="@routes.ExplainController.explain()">
                     <div class="py-1 px-0">
                         @*<div class="container">*@
-                        <div class="form-row justify-content-center align-baseline">
-                            <div class="form-group col-md-3">
-                                <input name="subject" class="form-control m-1" placeholder="Albert_Einstein" value="@FactComponent.stripBrackets(query.getSubject())">
-                            </div>
-                            <div class="form-group col-md-3" id="scrollable-dropdown-menu">
-                                <input name="predicate" class="form-control m-1 typeahead" placeholder="wasBornIn" value="@FactComponent.stripBrackets(query.getPredicate())">
-                            </div>
-                            <div class="form-group col-md-3 " >
-                                <input name="object" class="form-control m-1" placeholder="Germany" value="@FactComponent.stripBrackets(query.getObject())">
-                            </div>
+                        <div class="align-baseline">
+                            <div class="row col-md"> <label class="form-label mb-0"><h6>Query</h6></label></div>
+                            <div class="form-row text-left">
 
-                            <div class="form-group col-md-3">
-                                <button type="submit" class="btn btn-primary text-center btn-block m-1">Explain!</button>
+                                <div class="form-group col-md-3">
+                                    <input name="subject" class="form-control m-1" placeholder="Albert_Einstein" value="@FactComponent.stripBrackets(query.getSubject())">
+                                </div>
+                                <div class="form-group col-md-3" id="scrollable-dropdown-menu">
+                                    <input name="predicate" class="form-control m-1 typeahead" placeholder="wasBornIn" value="@FactComponent.stripBrackets(query.getPredicate())">
+                                </div>
+                                <div class="form-group col-md-3 " >
+                                    <input name="object" class="form-control m-1" placeholder="Germany" value="@FactComponent.stripBrackets(query.getObject())">
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    <button type="submit" class="btn btn-primary text-center btn-block m-1">Explain!</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="row form-row">
+                        <div class="form-group row mb-0">
                             <div class="col-md-12 text-left">
-                                <label class="form-label">Rules</label>
+                                <label class="form-label"><h6>Rules</h6></label>
                                 <textarea name="rules" class="form-control" rows="3" placeholder="a(?x,?y):- b(?x,?z), c(?z,?y)." >@query.getRules().trim()</textarea>
 
                             </div>

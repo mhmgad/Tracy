@@ -1,14 +1,16 @@
 @import extendedsldnf.datastructure.Explanation
+@import utils.Enums;
+
 @(explan: Explanation, index: Int)
 <dd data-generation="@explan.getGenOrder()" data-quality="@(1-explan.getQuality())"  data-length="@explan.size()" data-depth="@explan.getRulesEvidencesCount()" data-cost="@explan.getCost().getTotalCost()" class="explan-card">
     <div class="card border-dark m-1">
-        <div class="card-header card-header-sm">
+        <div class="card-header card-header-sm py-1">
             <div class="row">
-                <div class="col-sm">
+                <div class="col py-1">
                     <h6>Explanation #@{index + 1}</h6>
                 </div>
-                <div class="col-sm align-self-end text-right">
-                    <small>Quality: @("%.3f".format(explan.getQuality()))</small>
+                <div class="col align-self-end text-right">
+                    <small><strong>Confidence: @("%.3f".format(explan.getQuality()))</strong></small>
                 </div>
                 @*<div class="col-md-6">*@
                 @*<div class="btn-group btn-group-sm justify-content-end" role="group" aria-label="feedback">*@
@@ -21,10 +23,10 @@
             </div>
         </div>
         <div class="card-body ">
-            <h6 class="card-title">This fact can be true given that:</h6>
+            @*<h6 class="card-title">This fact can be true given that:</h6>*@
             <div class="card-text py-1 m-1" >
                 @*<p class="card-text p-y-1">@explan.toString()</p>*@
-                <div class="panel-group col-md-9">
+                <div class="panel-group col-md-10">
                     <div class="panel panel-default">
                         <div class="header-panel m-1">
                             <h6 class="panel-title">
@@ -66,7 +68,7 @@
                                                 <lu>
                                                     @if(node.getSourceActionType().toString().startsWith("TEXT")) {
                                                         @for(doc <- node.getTextResults().getEvidence().getDocuments()) {
-                                                            <li>(Page: <a href="@doc.getUrl()">@doc.getTitle()</a>) <br/>@doc.getText()</li>
+                                                            <li>@doc.getText() <i><small>(source: <a href="@doc.getUrl()">@doc.getTitle()</a>)</small></i> </li>
 
                                                         }
                                                     }
@@ -137,6 +139,23 @@
 
             @*<a href="#" class="card-link">link</a>*@
             @*<a href="#" class="card-link">Second link</a>*@
+        </div>
+
+        <div class="card-footer card-footer-sm py-1">
+            <div class="row py-0">
+            <div class="col-3 py-0">
+            <small>Cost: @explan.getCost().getTotalCost()</small>
+            </div>
+            <div class="col-3 py-0">
+                <small>Depth: @explan.getRulesEvidencesCount()</small>
+            </div>
+            <div class="col-3 py-0">
+                <small>#KG accesses: @(explan.getCost().getCount(Enums.ActionType.KG_VALID)+explan.getCost().getCount(Enums.ActionType.KG_BIND))</small>
+            </div>
+            <div class="col-3 py-0">
+                <small>#Text accesses: @(explan.getCost().getCount(Enums.ActionType.TEXT_VALID)+explan.getCost().getCount(Enums.ActionType.TEXT_BIND))</small>
+            </div>
+        </div>
         </div>
     </div>
 </dd>
