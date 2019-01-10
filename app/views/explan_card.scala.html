@@ -6,9 +6,9 @@
     <div class="card border-dark m-1">
         <div class="card-header card-header-sm py-1">
             <div class="row">
-                <div class="col py-1">
-                    <h6>Explanation #@{index + 1}</h6>
-                </div>
+                @*<div class="col py-1">*@
+                    @*<h6>Explanation #@{index + 1}</h6>*@
+                @*</div>*@
                 <div class="col align-self-end text-right">
                     <small><strong>Confidence: @("%.3f".format(explan.getQuality()))</strong></small>
                 </div>
@@ -24,11 +24,11 @@
         </div>
         <div class="card-body ">
             @*<h6 class="card-title">This fact can be true given that:</h6>*@
-            <div class="card-text py-1 m-1" >
+            <div class="card-text m-0" >
                 @*<p class="card-text p-y-1">@explan.toString()</p>*@
-                <div class="panel-group col-md-10">
+                <div class="panel-group col-md-11">
                     <div class="panel panel-default">
-                        <div class="header-panel m-1">
+                        <div class="header-panel">
                             <h6 class="panel-title">
                                 <a data-toggle="collapse" href="#factsdiv@{index}">Facts</a>
                             </h6>
@@ -64,7 +64,8 @@
 
                                         <div class="row">
                                             <div class="panel-collapse collapse" id="textE@{index}-@{eviIndex}">
-                                                <em>Text Evidences:</em>
+                                                <hr>
+                                                <strong><em>Spotting Evidence:</em></strong>
                                                 <lu>
                                                     @if(node.getSourceActionType().toString().startsWith("TEXT")) {
                                                         @for(doc <- node.getTextResults().getEvidence().getDocuments()) {
@@ -103,7 +104,7 @@
                         </div>
 
 
-                        <div class="header-panel m-1">
+                        <div class="header-panel mt-1">
 
 
                         @if(explan.getRulesEvidences().size()==0){
@@ -118,7 +119,7 @@
                             @*</div>*@
                         }else {
 
-                            <h6 class="panel-title">
+                            <h6 class="panel-title mt-1">
                                 <a data-toggle="collapse" href="#rulesdiv@{index}">Rules</a>
                             </h6>
                             @for(node <- explan.getRulesEvidences()) {
