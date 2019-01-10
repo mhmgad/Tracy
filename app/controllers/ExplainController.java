@@ -59,7 +59,8 @@ public class ExplainController extends Controller {
 //        Query exampleQ = new Query("<Albert_Einstein>", "<wasBornIn>", "<Germany>",  "wasBornIn(?x,?y):- birthPlace(?x,?z), in(?z,?y).\nwasBornIn(?x,?y):-  birthPlace(?x,?z), city_in(?z,?y).\n wasBornIn(?x,?y):-  wasBornIn(?x,?z), isA(?z,'city'), isLocatedIn(?z,?y), ?z!=?y.");
 //        Query exampleQ = new Query("Albert_Einstein", "wasBornIn", "Germany",  "wasBornIn(?x,?y):- isA(?y,'city').\nwasBornIn(?x,?y):- birthPlace(?x,?z), in(?z,?y).");
 
-        Query exampleQ=exampleQueries.get(1);
+        Query exampleQ = new Query("", "", "",  "");
+//        Query exampleQ=exampleQueries.get(1);
 
         return ok(index.render(exampleQ,exampleQueries ,null));
     }
