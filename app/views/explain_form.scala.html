@@ -111,6 +111,27 @@
             return matches;
         }
 
+        var filterEntitiesFunction= function(strs) {
+            var q= $( document.activeElement).val();
+
+            var matches, substringRegex;
+
+            // regex used to determine if a string contains the substring `q`
+            substrRegex = new RegExp(q, 'i');
+
+            // an array that will be populated with substring matches
+            matches = [];
+            // iterate through the pool of strings and for any string that
+            // contains the substring `q`, add it to the `matches` array
+            $.each(strs, function(i, str) {
+                if (substrRegex.test(str["mention"])) {
+                    // console.log( str);
+                    matches.push(str);
+                }
+            });
+            return matches;
+        }
+
 
 
         // console.log(entities_url);
@@ -120,8 +141,9 @@
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             remote: {
                 wildcard: "QUERY",
-                url:jsRoutes.controllers.ExplainController.getEntities("QUERY").url,
-                filter: filterFunction
+                url:jsRoutes.controllers.ExplainController.getEntities("QUERY").url
+                // filter: filterEntitiesFunction
+
             }
         });
 
@@ -160,11 +182,11 @@
                 },
                 {
                     name: 'entity',
-                    display: 'value',
-                    source: predicatesSuggestions, //substringMatcher(),
+                    display: 'readableId',
+                    source: entitiesSuggestions, //substringMatcher(),
                     templates: {
                         empty: Handlebars.compile('<div class="list-group-item col-xs-10"><em>No matchs!</em></div>'),
-                        suggestion: Handlebars.compile('<div class="list-group-item col-xs-10"><strong>{{value}}</strong></div>')
+                        suggestion: Handlebars.compile('<div class="list-group-item col-xs-10"><p class="my-0 mx-0"><strong>{{readableId}}</strong></p> <small><i>{{mention}}</i></small></div>')
                     }
 
                 });

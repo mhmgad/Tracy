@@ -14,7 +14,7 @@ GET     /example/:id                        controllers.ExplainController.exampl
 
 GET     /predicates                           controllers.ExplainController.getPredicates
 
-GET     /entites/:query                           controllers.ExplainController.getEntities(query: String)
+GET     /entities/:query                           controllers.ExplainController.getEntities(query: String)
 
 GET     /javascriptRoutes      controllers.ExplainController.javascriptRoutes
 

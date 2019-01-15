@@ -8,6 +8,9 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.*;
 import basics.FactComponent;
+import web.data.Paraphrase;
+import java.util.List;
+import com.google.gson.Gson;
 
 import views.html.*;
 import web.data.Query;
@@ -19,6 +22,10 @@ import Models.ExampleQueries;
 import play.routing.JavaScriptReverseRouter;
 import play.mvc.Controller;
 import play.mvc.Result;
+import dictionaries.elastic.Entities;
+
+import play.libs.Json;
+import play.libs.Json.*;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -33,13 +40,14 @@ public class ExplainController extends Controller {
 
     private final ExampleQueries exampleQueries;
 
-
+    private final Entities entitiesDict;
 
     @Inject
-    public ExplainController(final FormFactory formFactory,  ExplanationExtractorClient client, ExampleQueries exampleQueries) {
+    public ExplainController(final FormFactory formFactory,  ExplanationExtractorClient client, ExampleQueries exampleQueries,  Entities entitiesDict) {
         this.formFactory = formFactory;
         this.client=client;
         this.exampleQueries=exampleQueries;
+        this.entitiesDict=entitiesDict;
 
 
     }
@@ -155,44 +163,15 @@ public class ExplainController extends Controller {
 //    }
 public Result getEntities(String query){
     System.out.println(query);
-    String predicatesString="[{\"value\":\"actedIn\"}" +
-            "," +
-            "{\"value\":\"byTransport\"}," +
-            "{\"value\":\"created\"}," +
-            "{\"value\":\"dealsWith\"}," +
-            "{\"value\":\"diedIn\"}," +
-            "{\"value\":\"directed\"}," +
-            "{\"value\":\"edited\"}," +
-            "{\"value\":\"graduatedFrom\"}," +
-            "{\"value\":\"happenedIn\"}," +
-            "{\"value\":\"hasAcademicAdvisor\"}," +
-            "{\"value\":\"hasCapital\"}," +
-            "{\"value\":\"hasChild\"}," +
-            "{\"value\":\"hasCurrency\"}," +
-            "{\"value\":\"hasDuration\"}," +
-            "{\"value\":\"hasGender\"}," +
-            "{\"value\":\"hasMusicalRole\"}," +
-            "{\"value\":\"hasOfficialLanguage\"}," +
-            "{\"value\":\"hasWonPrize\"}," +
-            "{\"value\":\"influences\"}," +
-            "{\"value\":\"isAffiliatedTo\"}," +
-            "{\"value\":\"isCitizenOf\"}," +
-            "{\"value\":\"isConnectedTo\"}," +
-            "{\"value\":\"isInterestedIn\"}," +
-            "{\"value\":\"isKnownFor\"}," +
-            "{\"value\":\"isLeaderOf\"}," +
-            "{\"value\":\"isLocatedIn\"}," +
-            "{\"value\":\"isMarriedTo\"}," +
-            "{\"value\":\"isPoliticianOf\"}," +
-            "{\"value\":\"livesIn\"}," +
-            "{\"value\":\"owns\"}," +
-            "{\"value\":\"participatedIn\"}," +
-            "{\"value\":\"playsFor\"}," +
-            "{\"value\":\"wasBornIn\"}," +
-            "{\"value\":\"worksAt\"}," +
-            "{\"value\":\"wroteMusicFor\"}]";
 
-    return  ok(predicatesString);
+    List<Paraphrase> entitiesPara=entitiesDict.suggestEntities(query);
+//    System.out.println(entitiesPara);
+
+    Gson gson=new Gson();
+
+
+
+    return  ok(gson.toJson(entitiesPara));
 }
 
 

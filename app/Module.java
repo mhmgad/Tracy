@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import Models.ExampleQueries;
+import dictionaries.elastic.Entities;
 
 /**
  * This class is a Guice module that tells Guice how to bind several
@@ -46,6 +47,7 @@ public class Module extends AbstractModule {
 
 
     bind(ExplanationExtractorClient.class).toInstance(ExplanationExtractorClient.getInstance(prop.getProperty("server_url")));
+        bind(Entities.class).toInstance(Entities.getInstance(prop.getProperty("autocomplete_url")));
         bind(ExampleQueries.class).toInstance(ExampleQueries.getInstance());
 
     }

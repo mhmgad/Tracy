@@ -40,5 +40,8 @@ libraryDependencies += "org.webjars.bower" % "popper.js" % "1.14.4"
 libraryDependencies += "org.assertj" % "assertj-core" % "3.6.2" % Test
 libraryDependencies += "org.awaitility" % "awaitility" % "2.0.0" % Test
 
+libraryDependencies += "org.apache.logging.log4j" % "log4j-api" % "2.11.1"
+libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.11.1"
+
 //// Make verbose tests
 //testOptions in Test := Seq(Tests.Argument(TestFrameworks.JUnit, "-a", "-v"))
