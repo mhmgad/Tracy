@@ -21,6 +21,10 @@ public class ExampleQueries{
         examples.add(new Query(2,"Einstein 2","Albert_Einstein", "wasBornIn", "Germany",  "wasBornIn(?x,?y):- wasBornIn(?x,?z), in(?z,?y).\nin(?x,?y):-  isLocatedIn(?x,?z),  isLocatedIn(?z,?y)."));
         examples.add(new Query(3,"Sadiq Khan","Sadiq_Khan", "isCitizenOf", "United_Kingdom",  "isCitizenOf(?x,?y):- hasCapital(?y,?z), mayorOf(?x,?z).\n" +
                 "isCitizenOf(?x,?y):-  wasBornIn(?x,?z), isLocatedIn(?z,?y)."));
+
+        examples.add(new Query(4,"Christopher. Nalon", "Christopher_Nolan", "influencedBy", "George_Lucas", "influencedBy(?x,?y):- inspiredByCreation(?x,?y).\ninspiredByCreation(?x,?y):- created(?y,?z), influencedBy(?x,?z).\ninfluencedBy(?x,?y):- liked(?x,?y). \ninfluencedBy(?x,?y):- workedWith(?x,?y).\nworkedWith(?x,?y):- directed(?x,?z), directed(?y,?z)."));
+        examples.add(new Query(5,"Marissa Mayer", "Marissa_Mayer", "workedWith", "Larry_Page", "workedWith(?x,?y):- created(?y,?z), firstEmployee(?x,?z).\nworkedWith(?x,?y):- isAffiliatedTo(?x,?z), isAffiliatedTo(?y,?z)."));
+
     }
 
 

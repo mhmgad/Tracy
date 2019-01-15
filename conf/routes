@@ -10,5 +10,11 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 POST     /                           controllers.ExplainController.explain
 
-GET     /:id                        controllers.ExplainController.example(id: Int)
+GET     /example/:id                        controllers.ExplainController.example(id: Int)
+
+GET     /predicates                           controllers.ExplainController.getPredicates
+
+GET     /entites/:query                           controllers.ExplainController.getEntities(query: String)
+
+GET     /javascriptRoutes      controllers.ExplainController.javascriptRoutes
 

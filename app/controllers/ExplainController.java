@@ -16,6 +16,10 @@ import java.io.IOException;
 
 import Models.ExampleQueries;
 
+import play.routing.JavaScriptReverseRouter;
+import play.mvc.Controller;
+import play.mvc.Result;
+
 /**
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
@@ -47,6 +51,14 @@ public class ExplainController extends Controller {
 //
 //    }
 
+    public Result javascriptRoutes() {
+        return ok(
+                JavaScriptReverseRouter.create("jsRoutes",
+                        routes.javascript.ExplainController.getEntities(),
+                        routes.javascript.ExplainController.getPredicates()
+                )
+        ).as("text/javascript");
+    }
 
     /**
      * An action that renders an HTML page with a welcome message.
@@ -93,6 +105,95 @@ public class ExplainController extends Controller {
 
         return ok(index.render(q,exampleQueries,queryExplanations));
     }
+
+    public Result getPredicates(){
+        String predicatesString="[{\"value\":\"actedIn\"}" +
+                "," +
+                "{\"value\":\"byTransport\"}," +
+                "{\"value\":\"created\"}," +
+                "{\"value\":\"dealsWith\"}," +
+                "{\"value\":\"diedIn\"}," +
+                "{\"value\":\"directed\"}," +
+                "{\"value\":\"edited\"}," +
+                "{\"value\":\"graduatedFrom\"}," +
+                "{\"value\":\"happenedIn\"}," +
+                "{\"value\":\"hasAcademicAdvisor\"}," +
+                "{\"value\":\"hasCapital\"}," +
+                "{\"value\":\"hasChild\"}," +
+                "{\"value\":\"hasCurrency\"}," +
+                "{\"value\":\"hasDuration\"}," +
+                "{\"value\":\"hasGender\"}," +
+                "{\"value\":\"hasMusicalRole\"}," +
+                "{\"value\":\"hasOfficialLanguage\"}," +
+                "{\"value\":\"hasWonPrize\"}," +
+                "{\"value\":\"influences\"}," +
+                "{\"value\":\"isAffiliatedTo\"}," +
+                "{\"value\":\"isCitizenOf\"}," +
+                "{\"value\":\"isConnectedTo\"}," +
+                "{\"value\":\"isInterestedIn\"}," +
+                "{\"value\":\"isKnownFor\"}," +
+                "{\"value\":\"isLeaderOf\"}," +
+                "{\"value\":\"isLocatedIn\"}," +
+                "{\"value\":\"isMarriedTo\"}," +
+                "{\"value\":\"isPoliticianOf\"}," +
+                "{\"value\":\"livesIn\"}," +
+                "{\"value\":\"owns\"}," +
+                "{\"value\":\"participatedIn\"}," +
+                "{\"value\":\"playsFor\"}," +
+                "{\"value\":\"wasBornIn\"}," +
+                "{\"value\":\"worksAt\"}," +
+                "{\"value\":\"wroteMusicFor\"}]";
+
+       return  ok(predicatesString);
+    }
+
+//    public Result searchEntities(String str){
+//        String query ="{ \"query\": { \"bool\":{ \"must\": [ {\"match\": { \"mention\": \""+str+"\"}} ], \"should\":[ {\"match\": { \"id\": \""+FactComponent.forYagoEntity(str)+"\"}} ] } } }";
+//
+//
+
+//    }
+public Result getEntities(String query){
+    System.out.println(query);
+    String predicatesString="[{\"value\":\"actedIn\"}" +
+            "," +
+            "{\"value\":\"byTransport\"}," +
+            "{\"value\":\"created\"}," +
+            "{\"value\":\"dealsWith\"}," +
+            "{\"value\":\"diedIn\"}," +
+            "{\"value\":\"directed\"}," +
+            "{\"value\":\"edited\"}," +
+            "{\"value\":\"graduatedFrom\"}," +
+            "{\"value\":\"happenedIn\"}," +
+            "{\"value\":\"hasAcademicAdvisor\"}," +
+            "{\"value\":\"hasCapital\"}," +
+            "{\"value\":\"hasChild\"}," +
+            "{\"value\":\"hasCurrency\"}," +
+            "{\"value\":\"hasDuration\"}," +
+            "{\"value\":\"hasGender\"}," +
+            "{\"value\":\"hasMusicalRole\"}," +
+            "{\"value\":\"hasOfficialLanguage\"}," +
+            "{\"value\":\"hasWonPrize\"}," +
+            "{\"value\":\"influences\"}," +
+            "{\"value\":\"isAffiliatedTo\"}," +
+            "{\"value\":\"isCitizenOf\"}," +
+            "{\"value\":\"isConnectedTo\"}," +
+            "{\"value\":\"isInterestedIn\"}," +
+            "{\"value\":\"isKnownFor\"}," +
+            "{\"value\":\"isLeaderOf\"}," +
+            "{\"value\":\"isLocatedIn\"}," +
+            "{\"value\":\"isMarriedTo\"}," +
+            "{\"value\":\"isPoliticianOf\"}," +
+            "{\"value\":\"livesIn\"}," +
+            "{\"value\":\"owns\"}," +
+            "{\"value\":\"participatedIn\"}," +
+            "{\"value\":\"playsFor\"}," +
+            "{\"value\":\"wasBornIn\"}," +
+            "{\"value\":\"worksAt\"}," +
+            "{\"value\":\"wroteMusicFor\"}]";
+
+    return  ok(predicatesString);
+}
 
 
 
