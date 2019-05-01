@@ -98,10 +98,41 @@ public class ExplainController extends Controller {
 
     public Result explain() {
         Form<Query> qf=formFactory.form(Query.class).bindFromRequest();
+        System.out.println(qf.rawData());
+
         Query q=qf.get();
+
+        boolean yago=qf.rawData().getOrDefault("yago", "off").equals("on")? true:false;
+        boolean wikidata=qf.rawData().getOrDefault("wikidata", "off").equals("on")? true:false;
+
+        boolean wikipedia=qf.rawData().getOrDefault("wikipedia", "off").equals("on")? true:false;
+        boolean web=qf.rawData().getOrDefault("web", "off").equals("on")? true:false;
+
+        double wikipediaTrust=Double.parseDouble(qf.rawData().get("Wikipedia_weight"));
+        double webTrust=Double.parseDouble(qf.rawData().get("Wikipedia_weight"));
+
+
+
+
+
+        System.out.println( "Options{" +
+                "yago=" + yago +
+                ", wikidata=" + wikidata +
+                ", wikipedia=" + wikipedia +
+                ", web=" + web +
+                ", wikipediaTrust=" + wikipediaTrust +
+                ", webTrust=" + webTrust +
+                '}');
+
+
+//        System.out.println("yago "+yago);
+//        System.out.println(qf.requestData());
         q.setSubject(FactComponent.forUri(q.getSubject()));
         q.setObject(FactComponent.forUri(q.getObject()));
         System.out.println("explain "+q);
+
+
+
 //        Query exampleQ = new Query("<Albert_Einstein>", "<wasBornIn>", "<Germany>", "wasBornIn(?x,?y):- birthPlace(?x,?z), in(?z,?y).\nwasBornIn(?x,?y):-  birthPlace(?x,?z), city_in(?z,?y).");
 
         IQueryExplanations queryExplanations= null;
