@@ -9,6 +9,7 @@ import play.data.FormFactory;
 import play.mvc.*;
 import basics.FactComponent;
 import web.data.Paraphrase;
+import web.data.TextualSource;
 import java.util.List;
 import com.google.gson.Gson;
 
@@ -111,7 +112,15 @@ public class ExplainController extends Controller {
         double wikipediaTrust=Double.parseDouble(qf.rawData().get("Wikipedia_weight"));
         double webTrust=Double.parseDouble(qf.rawData().get("Wikipedia_weight"));
 
+        if(yago)
+            q.addKg("yago");
+        if(wikidata)
+            q.addKg("wikidata");
 
+        if(wikipedia)
+            q.addTextualSource(new TextualSource("wikipedia",wikipediaTrust));
+        if(web)
+            q.addTextualSource(new TextualSource("web",webTrust));
 
 
 
