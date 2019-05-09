@@ -9,7 +9,7 @@ import play.data.FormFactory;
 import play.mvc.*;
 import basics.FactComponent;
 import web.data.Paraphrase;
-import web.data.TextualSource;
+import extendedsldnf.datastructure.TextualSource;
 import java.util.List;
 import com.google.gson.Gson;
 
