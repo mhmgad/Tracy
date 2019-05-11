@@ -118,9 +118,9 @@ public class ExplainController extends Controller {
             q.addKg("wikidata");
 
         if(wikipedia)
-            q.addTextualSource(new TextualSource("wikipedia",wikipediaTrust));
+            q.addTextualSource(new TextualSource("ELASTIC",wikipediaTrust));
         if(web)
-            q.addTextualSource(new TextualSource("web",webTrust));
+            q.addTextualSource(new TextualSource("BING",webTrust));
 
 
 
