@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ssh -f sedna.mpi-inf.mpg.de -L 9350:localhost:9350 -N
+#ssh -f sedna.mpi-inf.mpg.de -L 9350:localhost:9350 -N
 
-ssh -f sedna.mpi-inf.mpg.de -L 5200:localhost:5200 -N
+ssh -f sedna.mpi-inf.mpg.de -L 9650:localhost:9650 -N
 
 ./sbt run
