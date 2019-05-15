@@ -6,8 +6,9 @@
 *@
 
 @import Models.ExampleQueries
+@import web.data.Query
 
-@(title: String, exampleQueries: ExampleQueries)(content: Html)
+@(title: String, exampleQueries: ExampleQueries, query:Query)(content: Html)
 
 
 
@@ -111,7 +112,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                            @options(null)
+                            @options(query)
                             </div>
                         </div>
                     </div>

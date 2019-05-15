@@ -81,6 +81,8 @@ public class ExplainController extends Controller {
 //        Query exampleQ = new Query("Albert_Einstein", "wasBornIn", "Germany",  "wasBornIn(?x,?y):- isA(?y,'city').\nwasBornIn(?x,?y):- birthPlace(?x,?z), in(?z,?y).");
 
         Query exampleQ = new Query("", "", "",  "");
+        exampleQ.addKg("yago");
+        exampleQ.addTextualSource(new TextualSource("ELASTIC",0.5));
 //        Query exampleQ=exampleQueries.get(1);
 
         return ok(index.render(exampleQ,exampleQueries ,null));
