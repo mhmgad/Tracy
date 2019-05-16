@@ -37,18 +37,18 @@
 
                     @*<input type="checkbox" aria-label="Checkbox for following text input">*@
                 </div>
-                <div class="list-group-item" enabled="false">
+                <div class="list-group-item" enabled="false" disabled>
                     <div class="row">
                         <div class="col-sm align-self-start">
                             <labal>Wikidata</labal>
                         </div>
-                        <div class="col-sm-2 align-self-end text-right">
+                        <div class="col-sm-2 align-self-end text-right" disabled>
                             @*<input type="checkbox" checked data-toggle="toggle-sm" data-onstyle="success"   data-onstyle="danger" data-size="small">*@
                             <label class="switch">
                                 @if(query.hasKg("wikidata")){
-                                <input type="checkbox" name="wikidata" checked>
+                                <input type="checkbox" name="wikidata" checked disabled>
                                 }else {
-                                    <input type="checkbox" name="wikidata">
+                                    <input type="checkbox" name="wikidata" disabled>
                                 }
                                 <span class="slider round"></span>
                             </label>
