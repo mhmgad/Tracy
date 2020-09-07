@@ -3,6 +3,8 @@ Tracing facts over Knowledge Graphs and text.
 
 This is the Web user interface for [*ExFaKT*](https://github.com/mhmgad/ExFaKT) framework.
 
+The web app is built using Playframework and Bootstrap 4.
+
 ## Run 
 
 1. Run [ExFaKT](https://github.com/mhmgad/ExFaKT) system first (do not forget to start elasticsearch)
